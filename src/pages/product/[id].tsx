@@ -20,10 +20,6 @@ interface ProductProps {
 }
 
 export default function Product({ product }: ProductProps) {
-
-  const isCreatingCheckoutSession = () => {}
-  const handleBuyButton = () => {}
-
   return (
     <>
       <Head>
@@ -41,7 +37,7 @@ export default function Product({ product }: ProductProps) {
 
           <p>{product.description}</p>
 
-          <button disabled={isCreatingCheckoutSession} onClick={handleBuyButton}>
+          <button>
             Buy now
           </button>
         </ProductDetails>
