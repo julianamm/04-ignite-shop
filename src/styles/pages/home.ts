@@ -7,13 +7,11 @@ export const HomeContainer = styled('main', {
   display: 'flex',
   marginLeft: 'auto',
   overflowY: 'hidden',
-  gap: '3rem',
 })
 
 export const Product = styled('a', {
   background: 'linear-gradient(180deg, #1ea4b3 0%, #7465d4 100%)',
   borderRadius: 8,
-  padding: '0.25rem',
   cursor: 'pointer',
   position: 'relative',
 
