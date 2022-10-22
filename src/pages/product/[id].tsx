@@ -1,9 +1,35 @@
-import { useRouter } from 'next/router'
+import Image from "next/future/image"
+import Head from "next/head"
+import { ImageContainer, ProductContainer, ProductDetails } from "../../styles/pages/product"
 
-export default function Proudct() {
-const { query } = useRouter()
+export default function Product() {
+
+  const isCreatingCheckoutSession = () => {}
+  const handleBuyButton = () => {}
 
   return (
-    <h1>Product: {JSON.stringify(query)}</h1>
+    <>
+      <Head>
+        <title>{`product.name`} | Ignite Shop</title>
+      </Head>
+
+      <ProductContainer>
+        <ImageContainer>
+          <Image src="product.imageUrl" width={520} height={480} alt="" />
+        </ImageContainer>
+
+        <ProductDetails>
+          <h1>{`product.name`}</h1>
+          <span>{`product.price`}</span>
+
+          <p>{`product.description`}</p>
+
+          <button disabled={isCreatingCheckoutSession} onClick={handleBuyButton}>
+            Buy now
+          </button>
+        </ProductDetails>
+      </ProductContainer>
+    </>
   )
+  
 }
