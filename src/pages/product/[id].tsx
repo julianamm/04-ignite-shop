@@ -1,8 +1,25 @@
 import Image from "next/future/image"
 import Head from "next/head"
+
+import { GetStaticProps } from "next"
+import Stripe from "stripe";
+import { stripe } from "../../lib/stripe";
+
 import { ImageContainer, ProductContainer, ProductDetails } from "../../styles/pages/product"
 
-export default function Product() {
+
+interface ProductProps {
+  product: {
+    id: string
+    name: string
+    imageUrl: string
+    price: string
+    description: string
+    defaultPriceId: string
+  }
+}
+
+export default function Product({ product }: ProductProps) {
 
   const isCreatingCheckoutSession = () => {}
   const handleBuyButton = () => {}
@@ -10,7 +27,7 @@ export default function Product() {
   return (
     <>
       <Head>
-        <title>{`product.name`} | Ignite Shop</title>
+        <title>{product.name} | Ignite Shop</title>
       </Head>
 
       <ProductContainer>
@@ -19,10 +36,10 @@ export default function Product() {
         </ImageContainer>
 
         <ProductDetails>
-          <h1>{`product.name`}</h1>
-          <span>{`product.price`}</span>
+          <h1>{product.name}</h1>
+          <span>{product.price}</span>
 
-          <p>{`product.description`}</p>
+          <p>{product.description}</p>
 
           <button disabled={isCreatingCheckoutSession} onClick={handleBuyButton}>
             Buy now
@@ -31,5 +48,32 @@ export default function Product() {
       </ProductContainer>
     </>
   )
-  
+}
+
+
+export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ params }) => {
+  const productId = params.id;
+
+  const product = await stripe.products.retrieve(productId, {
+    expand: ['default_price']
+  });
+
+  const price = product.default_price as Stripe.Price;
+
+  return {
+    props: {
+      product: {
+        id: product.id,
+        name: product.name,
+        imageUrl: product.images[0],
+        price: new Intl.NumberFormat('en-CA', {
+          style: 'currency',
+          currency: 'CAD'
+        }).format(price.unit_amount / 100),
+        description: product.description,
+        defaultPriceId: price.id
+      }
+    },
+    revalidate: 60 * 60 * 1 // 1 hours
+  }
 }
