@@ -1,34 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ignite Shop
+![Ignite Shop Cover](https://raw.githubusercontent.com/julianamm/04-ignite-shop/main/public/cover.png)
 
-## Getting Started
 
-First, run the development server:
+An e-commerce like application, made to put down in code previous knowledge of:
 
+- [x] React JS
+
+- [x] Next JS
+
+- [x] Server Side Rendering
+
+- [x] Static Site Generation
+
+- [x] Stripe Payment Integration
+
+- [x] Stitches CSS Framework
+
+
+## Techs and Libs used
+
+- [x] Stitches
+
+- [x] Next JS
+
+- [x] Stripe
+
+- [x] Axios
+
+
+## Features
+
+- [x] User can access a list of products
+
+- [x] User can access details of a single product and purchase it from there
+
+- [x] User can make a purchase checkout using stripe checkout session
+
+- [x] User can view checkout resume from success page
+
+## How to run locally
+
+Simply clone this project to user's machine, navigate to project's folder under a terminal of his/her choice and then run the following commands:
+
+> Using yarn
 ```bash
-npm run dev
-# or
-yarn dev
+$ yarn && yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> Using npm
+```bash
+$ npm install && npm run dev
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Future updates
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- [ ] Implement add to cart feature
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+> Before running locally, some environment variables must be set up..
+>
+> Refer to .env.example file to see which one to configure correctly...
+>
+> Refer to Stripe's documentation to know to get these variables from there...
